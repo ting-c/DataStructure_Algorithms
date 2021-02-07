@@ -88,6 +88,26 @@ class LinkedList {
 		previousNode.next = currentNode.next;
 		this.length -= 1;
 	}
+
+	print() {
+		let currentNode = this.head;
+		do {
+			console.log(currentNode);
+			currentNode = currentNode.next;
+		} while (currentNode)
+	}
+
+	reversePrint() {
+		function print(node) {
+			if (!node) 
+				return;
+			// recursive call
+			print(node.next)
+			console.log(node);
+		};
+		let currentNode = this.head;
+		print(currentNode);
+	}
 }
 
 class Node {
