@@ -318,4 +318,83 @@ describe("Doubly Linked List", () => {
 			expect(list).toStrictEqual(expectedList);
 		});
 	});
+
+	describe("Testing print method", () => {
+		it("should print nodes in order", () => {
+			// Arrange
+			let list = new DoublyLinkedList();
+			list.length = 3;
+			let node1 = new Node(1);
+			let node2 = new Node(2);
+			let node3 = new Node(3);
+			list.head = node1;
+			node1.next = node2;
+			node2.next = node3;
+
+			// mock function
+			console.log = jest.fn();
+
+			// Act
+			list.print();
+			let firstPrint = console.log.mock.calls[0][0];
+			let secondPrint = console.log.mock.calls[1][0];
+			let thirdPrint = console.log.mock.calls[2][0];
+
+			// Assert
+			expect(firstPrint).toBe(node1);
+			expect(secondPrint).toBe(node2);
+			expect(thirdPrint).toBe(node3);
+		});
+	});
+
+	describe("Testing reversePrint method", () => {
+		it("should print nodes in reverse order", () => {
+			// Arrange
+			let list = new DoublyLinkedList();
+			list.length = 3;
+			let node1 = new Node(1);
+			let node2 = new Node(2);
+			let node3 = new Node(3);
+			list.head = node1;
+			node1.next = node2;
+			node2.next = node3;
+
+			// mock function
+			console.log = jest.fn();
+
+			// Act
+			list.reversePrint();
+			let firstPrint = console.log.mock.calls[0][0];
+			let secondPrint = console.log.mock.calls[1][0];
+			let thirdPrint = console.log.mock.calls[2][0];
+
+			// Assert
+			expect(firstPrint).toBe(node3);
+			expect(secondPrint).toBe(node2);
+			expect(thirdPrint).toBe(node1);
+		});
+	});
+
+	describe("Testing reverse method", () => {
+		it("should reverse the list", () => {
+			// Arrange
+			let expectedList = new DoublyLinkedList();
+			expectedList.addAtEnd(new Node(3));
+			expectedList.addAtEnd(new Node(2));
+			expectedList.addAtEnd(new Node(1));
+			expectedList.length = 3
+
+			let list = new DoublyLinkedList();
+			list.addAtEnd(new Node(1));
+			list.addAtEnd(new Node(2));
+			list.addAtEnd(new Node(3));
+			list.length = 3;
+			
+			// Act
+			list.reverse();
+	
+			// Assert
+			expect(list).toStrictEqual(expectedList);
+		});
+	});
 })

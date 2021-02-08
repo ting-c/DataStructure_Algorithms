@@ -1,5 +1,5 @@
 class DoublyLinkedList {
-	constructor(){
+	constructor() {
 		this.head = null;
 		this.length = 0;
 	}
@@ -36,11 +36,11 @@ class DoublyLinkedList {
 		}
 		if (index === 0) {
 			this.addAtHead(node);
-			return
+			return;
 		} else {
 			let currentIndex = 0;
 			let currentNode = this.head;
-			while(currentIndex < index) {
+			while (currentIndex < index) {
 				currentNode = currentNode.next;
 				currentIndex += 1;
 			}
@@ -56,7 +56,7 @@ class DoublyLinkedList {
 
 	removeAtEnd() {
 		if (this.length === 0) {
-			return
+			return;
 		}
 		if (this.length === 1) {
 			this.head = null;
@@ -73,7 +73,7 @@ class DoublyLinkedList {
 
 	removeAtHead() {
 		if (this.length === 0) {
-			return
+			return;
 		}
 		if (this.length === 1) {
 			this.head = null;
@@ -85,16 +85,16 @@ class DoublyLinkedList {
 	}
 
 	removeAtIndex(index) {
-		if (index < 0 || index >= this.length)	{
-			throw "Invalid index"
+		if (index < 0 || index >= this.length) {
+			throw "Invalid index";
 		}
 		if (index === 0) {
 			this.removeAtHead();
-			return
+			return;
 		}
 		let currentNode = this.head;
 		let currentIndex = 0;
-		while(currentIndex < index){
+		while (currentIndex < index) {
 			currentNode = currentNode.next;
 			currentIndex += 1;
 		}
@@ -102,7 +102,45 @@ class DoublyLinkedList {
 		let nextNode = currentNode.next;
 		prevNode.next = nextNode;
 		nextNode.prev = prevNode;
-		this.length -= 1; 
+		this.length -= 1;
+	}
+
+	print() {
+		let currentNode = this.head;
+		do {
+			console.log(currentNode);
+			currentNode = currentNode.next;
+		} while (currentNode);
+	}
+
+	reversePrint() {
+		function print(node) {
+			if (!node) return;
+			// recursive call
+			print(node.next);
+			console.log(node);
+		}
+		let currentNode = this.head;
+		print(currentNode);
+	}
+
+	reverse() {
+		let reverse = (node) => {
+			if (!node.next) {
+				this.head = node;
+				this.head.prev = null;
+				return;
+			}
+			reverse(node.next);
+			// reverse link
+			let prevNode = node.prev;
+			let nextNode = node.next;
+			nextNode.next = node;
+			node.prev = nextNode;
+			node.next = prevNode;
+		};
+		let currentNode = this.head;
+		reverse(currentNode);
 	}
 }
 
