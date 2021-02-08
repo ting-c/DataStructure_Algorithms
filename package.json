@@ -4,7 +4,9 @@
   "description": "",
   "main": "",
   "dependencies": {},
-  "devDependencies": {"jest": "^26.6.3"},
+  "devDependencies": {
+    "jest": "^26.6.3"
+  },
   "scripts": {
     "test": "jest"
   },

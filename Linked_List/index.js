@@ -108,6 +108,22 @@ class LinkedList {
 		let currentNode = this.head;
 		print(currentNode);
 	}
+
+	reverse() {
+		let reverse = (node) => {
+			if (!node.next) {
+				this.head = node;
+				return
+			}
+			reverse(node.next);
+			// reverse link
+			let nextNode = node.next;
+			nextNode.next = node;
+			node.next = null;
+		}
+		let currentNode = this.head;
+		reverse(currentNode);
+	}
 }
 
 class Node {
