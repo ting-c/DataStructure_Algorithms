@@ -15,16 +15,14 @@ class LinkedList {
 	addAtEnd(node) {
 		if (this.length === 0) {
 			this.head = node;
-			this.length += 1;
-			return
+		} else {
+			let currentNode = this.head;
+			// get to the last node
+			while (currentNode.next) {
+				currentNode = currentNode.next;
+			}
+			currentNode.next = node;
 		}
-
-		let currentNode = this.head;
-		// get to the last node
-		while (currentNode.next) {
-			currentNode = currentNode.next;
-		}
-		currentNode.next = node;
 		this.length += 1;
 	}
 
@@ -54,18 +52,28 @@ class LinkedList {
 	}
 
 	removeAtHead() {
-		this.head = this.head.next;
+		if (this.length === 0) return
+		if (this.length === 1) {
+			this.head = null;
+		} else {
+			this.head = this.head.next;
+		}
 		this.length -= 1;
 	}
 
 	removeAtEnd() {
-		let currentNode = this.head;
-		let previousNode = null;
-		while (currentNode.next) {
-			previousNode = currentNode;
-			currentNode = currentNode.next;
+		if (this.length === 0) return;
+		if (this.length === 1) {
+			this.head = null;
+		} else {
+			let currentNode = this.head;
+			let previousNode = null;
+			while (currentNode.next) {
+				previousNode = currentNode;
+				currentNode = currentNode.next;
+			}
+			previousNode.next = null;
 		}
-		previousNode.next = null;
 		this.length -= 1;
 	}
 
