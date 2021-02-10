@@ -146,13 +146,6 @@ function showNestedObject(linkedList) {
 	console.log(util.inspect(linkedList, true, null, true));
 }
 
-let list = new CircularSinglyLinkedList();
-list.addAtEnd(new Node(1));
-list.addAtEnd(new Node(2));
-list.addAtEnd(new Node(3));
-list.reverse();
-showNestedObject(list)
-
 module.exports = {
 	Node,
 	CircularSinglyLinkedList
