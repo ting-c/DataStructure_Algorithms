@@ -78,34 +78,6 @@ describe("Doubly Linked List", () => {
 	});
 
 	describe("Testing addAtIndex method", () => {
-		it("should add a node2 at index 2", () => {
-			// Arrange
-			let expectedList = new DoublyLinkedList();
-			let node1 = new Node(1);
-			let node2 = new Node(2);
-			let node3 = new Node(3);
-			expectedList.length = 3;
-			expectedList.head = node1;
-			node1.next = node2;
-			node2.next = node3;
-			node3.prev = node2;
-			node2.prev = node1;
-
-			let list = new DoublyLinkedList();
-			let node1_ = new Node(1);
-			let node3_ = new Node(3);
-			list.length = 2;
-			list.head = node1_;
-			node1_.next = node3_;
-			node3_.prev = node1_;
-
-			//Act
-			list.addAtIndex(new Node(2), 1);
-
-			//Assert
-			expect(list).toStrictEqual(expectedList);
-		});
-
 		it("should throw an error when index is invalid", () => {
 			// Arrange
 			let list = new DoublyLinkedList();
@@ -123,6 +95,60 @@ describe("Doubly Linked List", () => {
 
 			//Assert
 			expect(() => act()).toThrow("Invalid index");
+		});
+
+		it("should add node1 as head node when index is 0", () => {
+			// Arrange
+			let expectedList = new DoublyLinkedList();
+			expectedList.addAtEnd(new Node(1));
+			expectedList.addAtEnd(new Node(2));
+			expectedList.addAtEnd(new Node(3));
+
+			let list = new DoublyLinkedList();
+			list.addAtEnd(new Node(2));
+			list.addAtEnd(new Node(3));
+
+			//Act
+			list.addAtIndex(new Node(1), 0);
+
+			//Assert
+			expect(list).toStrictEqual(expectedList);
+		});
+
+		it("should add node2 at index 1", () => {
+			// Arrange
+			let expectedList = new DoublyLinkedList();
+			expectedList.addAtEnd(new Node(1));
+			expectedList.addAtEnd(new Node(2));
+			expectedList.addAtEnd(new Node(3));
+
+			let list = new DoublyLinkedList();
+			list.addAtEnd(new Node(1));
+			list.addAtEnd(new Node(3));
+
+			//Act
+			list.addAtIndex(new Node(2), 1);
+
+			//Assert
+			expect(list).toStrictEqual(expectedList);
+		});
+
+		it("should add a node3 at index 2", () => {
+			// Arrange
+			let expectedList = new DoublyLinkedList();
+			expectedList.addAtEnd(new Node(1));
+			expectedList.addAtEnd(new Node(2));
+			expectedList.addAtEnd(new Node(3));
+
+			let list = new DoublyLinkedList();
+			list.addAtEnd(new Node(1));
+			list.addAtEnd(new Node(2));
+
+			//Act
+			list.addAtIndex(new Node(3), 2);
+
+			//Assert
+			expect(list).toStrictEqual(expectedList);
 		});
 	});
 
@@ -290,6 +316,24 @@ describe("Doubly Linked List", () => {
 			expect(list).toStrictEqual(expectedList);
 		});
 
+		it("should remove the last node if index is length-1 ", () => {
+			// Arrange
+			let expectedList = new DoublyLinkedList();
+			expectedList.addAtEnd(new Node(1));
+			expectedList.addAtEnd(new Node(2));
+
+			let list = new DoublyLinkedList();
+			list.addAtEnd(new Node(1));
+			list.addAtEnd(new Node(2));
+			list.addAtEnd(new Node(3));
+
+			//Act
+			list.removeAtIndex(2);
+
+			//Assert
+			expect(list).toStrictEqual(expectedList);
+		});
+
 		it("should remove node 2 at index 1", () => {
 			// Arrange
 			let expectedList = new DoublyLinkedList();
@@ -320,7 +364,7 @@ describe("Doubly Linked List", () => {
 	});
 
 	describe("Testing print method", () => {
-		it("should print nodes in order", () => {
+		it("should print nodes in order without repeats", () => {
 			// Arrange
 			let list = new DoublyLinkedList();
 			list.length = 3;
@@ -339,11 +383,13 @@ describe("Doubly Linked List", () => {
 			let firstPrint = console.log.mock.calls[0][0];
 			let secondPrint = console.log.mock.calls[1][0];
 			let thirdPrint = console.log.mock.calls[2][0];
+			let fourthPrint = console.log.mock.calls[3];
 
 			// Assert
 			expect(firstPrint).toBe(node1);
 			expect(secondPrint).toBe(node2);
 			expect(thirdPrint).toBe(node3);
+			expect(fourthPrint).toBeUndefined();
 		});
 	});
 

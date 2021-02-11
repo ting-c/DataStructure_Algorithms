@@ -31,26 +31,29 @@ class DoublyLinkedList {
 	}
 
 	addAtIndex(node, index) {
-		if (index < 0 || index >= this.length) {
+		if (index < 0 || index > this.length) {
 			throw "Invalid index";
 		}
 		if (index === 0) {
 			this.addAtHead(node);
 			return;
-		} else {
-			let currentIndex = 0;
-			let currentNode = this.head;
-			while (currentIndex < index) {
-				currentNode = currentNode.next;
-				currentIndex += 1;
-			}
-			let nextNode = currentNode;
-			let prevNode = currentNode.prev;
-			node.prev = prevNode;
-			node.next = nextNode;
-			prevNode.next = node;
-			nextNode.prev = node;
 		}
+		if (index === this.length) {
+			this.addAtEnd(node);
+			return
+		}
+		let currentIndex = 0;
+		let currentNode = this.head;
+		while (currentIndex < index) {
+			currentNode = currentNode.next;
+			currentIndex += 1;
+		}
+		let nextNode = currentNode;
+		let prevNode = currentNode.prev;
+		node.prev = prevNode;
+		node.next = nextNode;
+		prevNode.next = node;
+		nextNode.prev = node;
 		this.length += 1;
 	}
 
@@ -91,6 +94,10 @@ class DoublyLinkedList {
 		if (index === 0) {
 			this.removeAtHead();
 			return;
+		}
+		if (index === this.length - 1) {
+			this.removeAtEnd();
+			return
 		}
 		let currentNode = this.head;
 		let currentIndex = 0;
