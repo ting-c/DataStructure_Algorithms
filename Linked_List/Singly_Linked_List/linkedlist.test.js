@@ -1,5 +1,5 @@
 const { expect } = require('@jest/globals');
-const { Node, LinkedList } = require('../index');
+const { Node, LinkedList } = require('./index');
 
 describe("Linked List", () => {
 	describe("Testing addAtEnd method", () => {
