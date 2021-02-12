@@ -26,7 +26,7 @@ class Stack {
 		if (this.isEmpty()) {
 			return "Stack is empty";
 		}
-		return this.item[top];
+		return this.items[this.top];
 	}
 
 	isEmpty() {

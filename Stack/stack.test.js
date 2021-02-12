@@ -65,22 +65,18 @@ describe("Stack", () => {
 			expect(result).toBe("Stack is empty")
 		});
 
-		it("should remove 3 from the top of the stack", () => {
+		it("should return the top element of the stack", () => {
 			// Arrange
-			let expectedStack = new Stack();
-			expectedStack.push(1);
-			expectedStack.push(2);
-
 			let stack = new Stack();
 			stack.push(1);
 			stack.push(2);
 			stack.push(3);
 
 			//Act
-			stack.pop(3);
+			let result = stack.peek();
 	
 			//Assert
-			expect(stack).toStrictEqual(expectedStack);
+			expect(result).toStrictEqual(3);
 		});
 	});
 
