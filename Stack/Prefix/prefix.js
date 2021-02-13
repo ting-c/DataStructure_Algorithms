@@ -1,5 +1,4 @@
 const Postfix = require("../Postfix/postfix");
-const Stack = require("../stack");
 
 class Prefix extends Postfix {
 	reverse(array) {

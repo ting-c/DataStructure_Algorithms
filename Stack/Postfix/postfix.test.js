@@ -2,7 +2,7 @@ const { expect } = require('@jest/globals');
 const Postfix = require('./postfix');
 
 
-describe("BalancedBrackets", () => {
+describe("Postfix", () => {
 	let postfix;
 
 	beforeEach(() => {

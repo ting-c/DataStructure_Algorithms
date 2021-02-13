@@ -1,7 +1,7 @@
 const { expect } = require("@jest/globals");
 const Prefix = require("./prefix");
 
-describe("BalancedBrackets", () => {
+describe("Prefix", () => {
 	let prefix;
 
 	beforeEach(() => {
