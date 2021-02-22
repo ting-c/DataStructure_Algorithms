@@ -31,22 +31,25 @@ class BinarySearchTree {
 
 	search(data) {
 		// Recursive function
-		let search = (root, data) => {
-			if (!root) {
-				return false
+		let search = (node, data) => {
+			if (!node) {
+				return null
 			} 
-			else if (root.data === data) {
-				return true
+			else if (node.data === data) {
+				return node
 			}
-			else if (data <= root.data) {
-				return search(root.left, data);
+			else if (data <= node.data) {
+				return search(node.left, data);
 			}
-			else {
-				return search(root.right, data);
-			}
+			return search(node.right, data);
 		}
 
 		return search(this.root, data);
+	}
+
+	delete(data) {
+		// search for node
+		this.search(data)
 	}
 }
 

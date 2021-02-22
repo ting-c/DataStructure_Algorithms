@@ -237,9 +237,9 @@ describe("Binary Search Tree", () => {
 	});
 
 	describe("Testing search method", () => {
-		it("return false when data is not in the tree", () => {
+		it("return null when data is not in the tree", () => {
 			// Arrange
-			let expectedResult = false
+			let expectedResult = null;
 			let data = 2;
 			tree.insert(10);
 			tree.insert(7);
@@ -253,9 +253,9 @@ describe("Binary Search Tree", () => {
 			expect(result).toBe(expectedResult);
 		});
 
-		it("return false when data is not in the tree", () => {
+		it("return null when data is not in the tree", () => {
 			// Arrange
-			let expectedResult = false
+			let expectedResult = null;
 			let data = -12;
 			tree.insert(10);
 			tree.insert(7);
@@ -269,36 +269,40 @@ describe("Binary Search Tree", () => {
 			expect(result).toBe(expectedResult);
 		});
 
-		it("return true when data is in the tree", () => {
+		it("return the node when data is in the tree", () => {
 			// Arrange
-			let expectedResult = true;
-			let data = 10;
+			let expectedNode = new Node(10);
+			expectedNode.left = new Node(7);
+			expectedNode.right = new Node(12);
+			expectedNode.right.left = new Node(11);
+
 			tree.insert(10);
 			tree.insert(7);
 			tree.insert(12);
 			tree.insert(11);
 
 			// Act
-			let result = tree.search(data);
+			let node = tree.search(10);
 
 			// Assert
-			expect(result).toBe(expectedResult);
+			expect(node).toStrictEqual(expectedNode);
 		});
 
-		it("return true when data is in the tree", () => {
+		it("return the node when data is in the tree", () => {
 			// Arrange
-			let expectedResult = true;
-			let data = 11;
+			let expectedNode = new Node(12);
+			expectedNode.left = new Node(11);
+
 			tree.insert(10);
 			tree.insert(7);
 			tree.insert(12);
 			tree.insert(11);
 
 			// Act
-			let result = tree.search(data);
+			let node = tree.search(12);
 
 			// Assert
-			expect(result).toBe(expectedResult);
+			expect(node).toStrictEqual(expectedNode);
 		});
 	})
 });
