@@ -305,4 +305,120 @@ describe("Binary Search Tree", () => {
 			expect(node).toStrictEqual(expectedNode);
 		});
 	})
+
+	describe("Testing min method", () => {
+		it("return null when data is not in the tree", () => {
+			// Arrange
+			let expectedResult = null;
+
+			// Act
+			let result = tree.min();
+
+			// Assert
+			expect(result).toBe(expectedResult);
+		});
+
+		it("return the min element when it is the root node", () => {
+			// Arrange
+			let expectedResult = 10;
+
+			tree.insert(10);
+			tree.insert(12);
+			tree.insert(13);
+
+			// Act
+			let result = tree.min();
+
+			// Assert
+			expect(result).toBe(expectedResult);
+		});
+
+		it("return the min element when it is a node with a child", () => {
+			// Arrange
+			let expectedResult = 8;
+
+			tree.insert(10);
+			tree.insert(8);
+			tree.insert(9);
+
+			// Act
+			let result = tree.min();
+
+			// Assert
+			expect(result).toBe(expectedResult);
+		});
+
+		it("return the min element when it is a leaf node", () => {
+			// Arrange
+			let expectedResult = 8;
+
+			tree.insert(10);
+			tree.insert(9);
+			tree.insert(8);
+
+			// Act
+			let result = tree.min();
+
+			// Assert
+			expect(result).toBe(expectedResult);
+		});
+	})
+
+	describe("Testing max method", () => {
+		it("return null when data is not in the tree", () => {
+			// Arrange
+			let expectedResult = null;
+
+			// Act
+			let result = tree.max();
+
+			// Assert
+			expect(result).toBe(expectedResult);
+		});
+
+		it("return the max element when it is the root node", () => {
+			// Arrange
+			let expectedResult = 20;
+
+			tree.insert(20);
+			tree.insert(12);
+			tree.insert(13);
+
+			// Act
+			let result = tree.max();
+
+			// Assert
+			expect(result).toBe(expectedResult);
+		});
+
+		it("return the max element when it is a node with a child", () => {
+			// Arrange
+			let expectedResult = 18;
+
+			tree.insert(10);
+			tree.insert(18);
+			tree.insert(16);
+
+			// Act
+			let result = tree.max();
+
+			// Assert
+			expect(result).toBe(expectedResult);
+		});
+
+		it("return the max element when it is a leaf node", () => {
+			// Arrange
+			let expectedResult = 18;
+
+			tree.insert(10);
+			tree.insert(16);
+			tree.insert(18);
+
+			// Act
+			let result = tree.max();
+
+			// Assert
+			expect(result).toBe(expectedResult);
+		});
+	})
 });

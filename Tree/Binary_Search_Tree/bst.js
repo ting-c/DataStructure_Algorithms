@@ -47,10 +47,26 @@ class BinarySearchTree {
 		return search(this.root, data);
 	}
 
-	delete(data) {
-		// search for node
-		this.search(data)
+	min() {
+		if (!this.root)
+			return null;
+		let node = this.root;
+		while (node.left) {
+			node = node.left;
+		}
+		return node.data; 
 	}
+
+	max() {
+		if (!this.root)
+			return null;
+		let node = this.root;
+		while (node.right) {
+			node = node.right;
+		}
+		return node.data; 
+	}	
+
 }
 
 module.exports = {
