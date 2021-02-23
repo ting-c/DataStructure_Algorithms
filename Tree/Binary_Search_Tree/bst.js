@@ -65,7 +65,23 @@ class BinarySearchTree {
 			node = node.right;
 		}
 		return node.data; 
-	}	
+	}
+	
+	findHeight() {
+		if (!this.root)
+			return 0
+			
+		let height = (node) => {
+			if (!node) {
+				return -1
+			}
+			let leftHeight = height(node.left);
+			let rightHeight = height(node.right);
+	
+			return Math.max(leftHeight, rightHeight) + 1;
+		}
+		return height(this.root);
+	}
 
 }
 

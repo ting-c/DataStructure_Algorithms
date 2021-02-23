@@ -421,4 +421,53 @@ describe("Binary Search Tree", () => {
 			expect(result).toBe(expectedResult);
 		});
 	})
+
+	describe("Testing findHeight method", () => {
+		it("return 0 for an empty tree", () => {
+			// Arrange
+			let expectedResult = 0;
+
+			// Act
+			let result = tree.findHeight();
+
+			// Assert
+			expect(result).toBe(expectedResult);
+		});
+
+		it("return 1", () => {
+			// Arrange
+			let expectedResult = 1;
+
+			tree.insert(10);
+			tree.insert(5);
+			tree.insert(12);
+
+			// Act
+			let result = tree.findHeight();
+
+			// Assert
+			expect(result).toBe(expectedResult);
+		});
+
+		it("return 3", () => {
+			// Arrange
+			let expectedResult = 3;
+
+			tree.insert(10);
+			tree.insert(5);
+			tree.insert(12);
+			tree.insert(11);
+			tree.insert(13);
+			tree.insert(7);
+			tree.insert(6);
+
+			// Act
+			let result = tree.findHeight();
+
+			// Assert
+			expect(result).toBe(expectedResult);
+		});
+
+		
+	})
 });
